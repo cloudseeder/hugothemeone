@@ -3,7 +3,7 @@
 {{define "body"}}
 {{$title := default site.Title .Title}}
 <section id="hero">
-  <img class="hero" src="{{partialCached "hero.svg" $ " nothing" }}" alt="Image" style="width: 500px;" />
+  <img class="hero" src="{{partialCached "hero.svg" $ "nothing" }}" alt="Image" style="width: 500px;" />
   <div class="intro">
     {{with $title}}<h1>{{.}}</h1>{{end}}
     {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
@@ -20,12 +20,13 @@
     {{range $name, $data := .}}
     <li>
       <a href="#">
-        {{$img := resources.GetMatch (print "image/products/" $name ".*") | images.Filter (images.Overlay (resources.GetMatch "image/watermark.*") 0 0 )}}
+        {{$img := resources.GetMatch (print "image/products/" $name ".*") | images.Filter (images.Overlay
+        (resources.GetMatch "image/watermark.*") 0 0 )}}
 
         <picture>
-          <source srcset="{{($img.Resize " 500x webp").Permalink}}, {{($img.Resize " 1000x webp").Permalink}} 2x" type="image/webp">
-          <img src="{{($img.Resize " 500x").Permalink}}" width="100%" alt="Image"
-            srcset="{{($img.Resize " 1000x").Permalink}} 2x">
+          <source srcset="{{($img.Resize " 500x webp").Permalink}}, {{($img.Resize " 1000x webp" ).Permalink}} 2x"
+            type="image/webp">
+          <img src="{{($img.Resize "500x").Permalink}}" width="100%" alt="Image" srcset="{{($img.Resize "1000x").Permalink}} 2x">
         </picture>
 
         <!-- {{$img := $img.Resize "1000x"}}
@@ -109,9 +110,10 @@
 
 
         <picture>
-          <source srcset="{{(.Resize "500x webp").Permalink}}, {{(.Resize "1000x webp").Permalink}} 2x" type="image/webp">
-          <img src="{{(.Resize " 500x").Permalink}}" width="100%" alt="Image"
-            srcset="{{(.Resize " 1000x").Permalink}} 2x">
+          <source srcset="{{(.Resize " 500x webp").Permalink}}, {{(.Resize "1000x webp" ).Permalink}} 2x"
+            type="image/webp">
+          <img src="{{(.Resize " 500x").Permalink}}" width="100%" alt="Image" srcset="{{(.Resize " 1000x").Permalink}}
+            2x">
         </picture>
 
         <!-- <img alt="{{$title}}" loading="lazy" src="{{(.Resize " 1000x webp").Permalink}}" /> -->
@@ -137,11 +139,22 @@
   <div>
     <ol>
       {{range .}}
+      {{$author := default "" .author}}
+      {{$content := default "" .content}}
+      {{$from := default "" .from}}
+      {{if .tweet}}
+      {{$tweet := getJSON
+      "https://publish.twitter.com/oembed?url="
+      .tweet "&omit_script=1&hide_media=1&hide_thread=1&dnt=true" }}
+      {{$author = $tweet.author_name }}
+      {{$from = "via Twitter"}}
+      {{$content = $tweet.html }}
+      {{end}}
       <li>
-        <p>{{.content}}</p>
+        <p>{{$content | safeHTML}}</p>
         <div>
-          <h2>{{.author}}</h2>
-          <h3>{{.from}}</h3>
+          <h2>{{$author | title}}</h2>
+          <h3>{{$from}}</h3>
         </div>
       </li>
       {{end}}
@@ -149,4 +162,5 @@
   </div>
 </section>
 {{end}}
+
 {{ end }}
