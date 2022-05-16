@@ -980,7 +980,7 @@ body.page form .colors input[value=Blue] {
 }
 #search > div {
   opacity: 0;
-  display: none;
+  display: block;
   background-color: #fff;
   position: absolute;
   right: 1rem;
@@ -988,75 +988,84 @@ body.page form .colors input[value=Blue] {
   box-shadow: 0 0 transparent,0 0 transparent,0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);
   z-index: 50;
 }
-#search > div a:hover {
-  background-color: rgba(var(--red), var(--green), var(--blue), .2);
+#search>div a:hover {
+    background-color: rgba(var(--red), var(--green), var(--blue), .5);
 }
-#search > div a {
-  border-color: #d1d5db;
-  cursor: pointer;
-  display: grid;
-  padding: .5rem;
-  column-gap: .5rem;
-  grid-template-columns: 40px 1fr;
+
+#search>div a {
+    border-color: #d1d5db;
+    cursor: pointer;
+    display: grid;
+    padding: .5rem;
+    column-gap: .5rem;
+    grid-template-columns: 40px 1fr;
 }
-#search > div a.selected {
-  background-color: rgba(var(--red), var(--green), var(--blue), .1);
+
+#search>div a.selected {
+    background-color: rgba(var(--red), var(--green), var(--blue), .1);
 }
-#search > div img {
-  border-width: 0;
-  float: left;
-  grid-row-start: 1;
-  grid-row-end: span 2;
-  clear: left;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;"> <path fill="rgb(75, 85, 99)" d="M0,47.7l14.3-17.6l9.7,9.8L38.7,20L48,31.4v16.3H0z M24.7,15.6c1.8,0,3.3,1.5,3.3,3.4s-1.5,3.4-3.3,3.4s-3.3-1.5-3.3-3.4S22.8, 15.6, 24.7, 15.6z"/></svg>');
+
+#search>div img {
+    border-width: 0;
+    float: left;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    clear: left;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;"> <path fill="rgb(75, 85, 99)" d="M0,47.7l14.3-17.6l9.7,9.8L38.7,20L48,31.4v16.3H0z M24.7,15.6c1.8,0,3.3,1.5,3.3,3.4s-1.5,3.4-3.3,3.4s-3.3-1.5-3.3-3.4S22.8, 15.6, 24.7, 15.6z"/></svg>');
 }
-#search > div h3 {
-  font-weight: 700;
-  font-size: .875rem;
-  line-height: 1.25rem;
-  overflow: hidden;
-  color: #1f2937;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+#search>div h3 {
+    font-weight: 700;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    overflow: hidden;
+    color: #1f2937;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-#search > div span {
-  grid-column-start: 2;
-  font-size: .75rem;
-  line-height: 1rem;
-  overflow: hidden;
-  color: #374151;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+#search>div span {
+    grid-column-start: 2;
+    font-size: .75rem;
+    line-height: 1rem;
+    overflow: hidden;
+    color: #374151;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
 #search input:focus ~ div {
-  display: block;
-  opacity: 1;
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-duration: 75ms;
+    display: block;
+    opacity: 1;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: 75ms;
 }
+
 #search input {
-  background-color: #f3f4f6;
-  border-color: transparent;
-  display: block;
-  margin-top: .25rem;
-  padding: 5px 10px 5px 40px;
-  border-radius: 50px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.313 250.313" width="512" height="512" enable-background="new 0 0 250.313 250.313"><path d="M244.186 214.604l-54.379-54.378c-.289-.289-.628-.491-.93-.76 10.7-16.231 16.945-35.66 16.945-56.554 0-56.837-46.075-102.912-102.911-102.912s-102.911 46.075-102.911 102.911c0 56.835 46.074 102.911 102.91 102.911 20.895 0 40.323-6.245 56.554-16.945.269.301.47.64.759.929l54.38 54.38c8.169 8.168 21.413 8.168 29.583 0 8.168-8.169 8.168-21.413 0-29.582zm-141.275-44.458c-37.134 0-67.236-30.102-67.236-67.235 0-37.134 30.103-67.236 67.236-67.236 37.132 0 67.235 30.103 67.235 67.236s-30.103 67.235-67.235 67.235z" fill="rgb(156, 163, 175)"/></svg>');
-  background-size: .8rem;
-  background-position: 10px;
-  background-repeat: no-repeat;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #6b7280;
+    background-color: #f3f4f6;
+    border-color: transparent;
+    display: block;
+    margin-top: .25rem;
+    padding: 5px 10px 5px 40px;
+    border-radius: 50px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.313 250.313" width="512" height="512" enable-background="new 0 0 250.313 250.313"><path d="M244.186 214.604l-54.379-54.378c-.289-.289-.628-.491-.93-.76 10.7-16.231 16.945-35.66 16.945-56.554 0-56.837-46.075-102.912-102.911-102.912s-102.911 46.075-102.911 102.911c0 56.835 46.074 102.911 102.91 102.911 20.895 0 40.323-6.245 56.554-16.945.269.301.47.64.759.929l54.38 54.38c8.169 8.168 21.413 8.168 29.583 0 8.168-8.169 8.168-21.413 0-29.582zm-141.275-44.458c-37.134 0-67.236-30.102-67.236-67.235 0-37.134 30.103-67.236 67.236-67.236 37.132 0 67.235 30.103 67.235 67.236s-30.103 67.235-67.235 67.235z" fill="rgb(156, 163, 175)"/></svg>');
+    background-size: .8rem;
+    background-position: 10px;
+    background-repeat: no-repeat;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #6b7280;
 }
+
 #search input:focus {
-  background-color: #fff;
-  border-color: #6b7280;
-  box-shadow: 0 0 0 0 #fff,0 0 0 calc(0px) rgba(59,130,246,.5),0 0 transparent;
-  color: #1f2937;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.313 250.313" width="512" height="512" enable-background="new 0 0 250.313 250.313"><path d="M244.186 214.604l-54.379-54.378c-.289-.289-.628-.491-.93-.76 10.7-16.231 16.945-35.66 16.945-56.554 0-56.837-46.075-102.912-102.911-102.912s-102.911 46.075-102.911 102.911c0 56.835 46.074 102.911 102.91 102.911 20.895 0 40.323-6.245 56.554-16.945.269.301.47.64.759.929l54.38 54.38c8.169 8.168 21.413 8.168 29.583 0 8.168-8.169 8.168-21.413 0-29.582zm-141.275-44.458c-37.134 0-67.236-30.102-67.236-67.235 0-37.134 30.103-67.236 67.236-67.236 37.132 0 67.235 30.103 67.235 67.236s-30.103 67.235-67.235 67.235z" fill="rgb(55, 65, 81)"/></svg>');
+    background-color: #fff;
+    border-color: #6b7280;
+    box-shadow: 0 0 0 0 #fff, 0 0 0 calc(0px) rgba(59, 130, 246, .5), 0 0 transparent;
+    color: #1f2937;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.313 250.313" width="512" height="512" enable-background="new 0 0 250.313 250.313"><path d="M244.186 214.604l-54.379-54.378c-.289-.289-.628-.491-.93-.76 10.7-16.231 16.945-35.66 16.945-56.554 0-56.837-46.075-102.912-102.911-102.912s-102.911 46.075-102.911 102.911c0 56.835 46.074 102.911 102.91 102.911 20.895 0 40.323-6.245 56.554-16.945.269.301.47.64.759.929l54.38 54.38c8.169 8.168 21.413 8.168 29.583 0 8.168-8.169 8.168-21.413 0-29.582zm-141.275-44.458c-37.134 0-67.236-30.102-67.236-67.235 0-37.134 30.103-67.236 67.236-67.236 37.132 0 67.235 30.103 67.235 67.236s-30.103 67.235-67.235 67.235z" fill="rgb(55, 65, 81)"/></svg>');
 }
+
 @media screen and (max-width:1023px) {
   #cart > div {
     right: 0;

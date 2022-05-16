@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "fuse.js": "^6.6.1"
+  }
+}
